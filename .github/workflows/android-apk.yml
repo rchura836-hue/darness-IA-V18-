@@ -1,4 +1,3 @@
-
 name: Build DARNNESS Android APK
 
 on:
@@ -28,5 +27,4 @@ jobs:
           name: DARNNESS-IA-OTC-V28.1-APK
           path: android/bin/*.apk
           if-no-files-found: error
-          retention-da
-          ys: 14
+          retention-days: 14
