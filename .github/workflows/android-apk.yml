@@ -1,3 +1,4 @@
+
 name: Build DARNNESS Android APK
 
 on:
@@ -10,15 +11,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/kivy/buildozer:latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build debug APK
-        uses: ArtemSBulgakov/buildozer-action@v1
-        with:
-          workdir: android
-          command: buildozer android debug
+        working-directory: android
+        run: buildozer android debug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
@@ -26,4 +28,5 @@ jobs:
           name: DARNNESS-IA-OTC-V28.1-APK
           path: android/bin/*.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-da
+          ys: 14
